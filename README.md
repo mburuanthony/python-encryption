@@ -1,7 +1,7 @@
 ## RSA & AES encryption algorithms
 
 ```bash
-#install requirements
+# install requirements
 # requires --> cryptography==38.0.1
 
 pip install cryptography
