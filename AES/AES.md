@@ -1,7 +1,3 @@
-requires package --> cryptography==38.0.1
-
-install with --> pip install cryptography
-
 AES IMPLEMENTATION
 ------------------
 AES is a symmetric encryption mechanism hence the sender and receiver both use the same secret key. 
@@ -12,8 +8,9 @@ AES is a symmetric encryption mechanism hence the sender and receiver both use t
     1. A Backend is an interface that can support operations such as 
     Symmetric encryption, Message digests (Hashing), and Hash-based message authentication codes (HMAC).
 
+    ```python
     backend = default_backend()
-
+    ```
 
 - Creating the key and initialization vector
     1. The key, a single key to e used for both encryption & decryption, can be of any length (128bits, 192bits, 256bits). 
@@ -23,25 +20,29 @@ AES is a symmetric encryption mechanism hence the sender and receiver both use t
         - To use 256 bits length pass a value of 32 as a parameter to the key generating method. i.e os.urandom(32)
     2. The initialization vector (iv) is always a randomly generated value that has the size of the AES block (128 bits)
     
+    ```python
     key = os.urandom(32)
     iv = os.urandom(16)
-
+    ```
 
 - Creating a cipher object 
     1. The cipher object takes an Algorithm argument. AES for this case.
     2. A mode. CBC for this case. Cipher Block Chaining which is cryptographically strong.
     3. A backend. default_backends for this case.
 
+    ```python
     cipher = Cipher(algorithm=algorithms.AES(
         key), mode=modes.CBC(iv),  backend=backend)
-
+    ```
 
 - Creating encryptor and decryptor objects
     1. The encryptor object is used to encrypt plaintext
     2. The decryptor object is used in decryption
 
+    ```python
     encryptor = cipher.encryptor()
     decryptor = cipher.decryptor()
+    ```
 
 - The rest are functions that use the above created objects (cipher, key, decryptor, encryptor)
 
@@ -54,6 +55,7 @@ AES is a symmetric encryption mechanism hence the sender and receiver both use t
         required by the selected AES block size.
     6. The provided string in the printed error message is of sufficient size.
 
+    ```python
     if __name__ == '__main__':
         try:
             main()
@@ -62,3 +64,4 @@ AES is a symmetric encryption mechanism hence the sender and receiver both use t
             abort()
         except KeyboardInterrupt:
             abort()
+    ```
